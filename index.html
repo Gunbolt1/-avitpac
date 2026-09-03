@@ -172,9 +172,10 @@
     .hero{
       position:relative;
       min-height:100svh;
-      padding:160px 0 80px;
+      padding:132px 0 54px;
+      background:radial-gradient(ellipse at 50% 82%,rgba(255,255,255,.018),transparent 50%),var(--bg);
       display:flex;
-      align-items:flex-end;
+      align-items:center;
       overflow:hidden;
       isolation:isolate;
     }
@@ -182,7 +183,7 @@
       position:absolute;
       inset:0;
       z-index:-3;
-      opacity:.52;
+      opacity:.2;
       background-image:linear-gradient(rgba(255,255,255,.033) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.033) 1px,transparent 1px);
       background-size:76px 76px;
       mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.78) 65%,transparent 100%);
@@ -194,45 +195,29 @@
       inset:0;
       background:linear-gradient(90deg,var(--bg) 0%,transparent 26%,transparent 76%,var(--bg) 100%);
     }
-    .hero-glow{
-      position:absolute;
-      z-index:-2;
-      width:760px;
-      height:760px;
-      right:-180px;
-      top:-140px;
-      border-radius:50%;
-      background:radial-gradient(circle at 44% 48%,rgba(210,225,238,.13),rgba(115,137,158,.035) 38%,transparent 70%);
-      filter:blur(4px);
-      transform:translate3d(calc((var(--px) - 50vw) * .018),calc((var(--py) - 35vh) * .018),0);
-    }
-    .hero-stage{position:absolute;z-index:-1;inset:80px 2vw 0 42%;pointer-events:none;perspective:1000px}
-    .hero-plane{
-      position:absolute;
-      border:1px solid rgba(255,255,255,.11);
-      background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.006));
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 38px 90px rgba(0,0,0,.38);
-      backdrop-filter:blur(5px);
-      transform-style:preserve-3d;
-    }
-    .hero-plane--one{width:360px;height:210px;right:6%;top:13%;transform:rotateX(62deg) rotateZ(-20deg);animation:planeOne 14s ease-in-out infinite}
-    .hero-plane--two{width:210px;height:300px;right:30%;bottom:5%;transform:rotateY(-54deg) rotateZ(12deg);animation:planeTwo 16s ease-in-out infinite}
-    .hero-plane--three{width:140px;height:140px;right:3%;bottom:19%;border-radius:50%;background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.14),rgba(255,255,255,.015) 56%,transparent);animation:orbFloat 12s ease-in-out infinite}
-    @keyframes planeOne{0%,100%{transform:rotateX(62deg) rotateZ(-20deg) translate3d(0,0,0)}50%{transform:rotateX(58deg) rotateZ(-17deg) translate3d(-12px,18px,22px)}}
-    @keyframes planeTwo{0%,100%{transform:rotateY(-54deg) rotateZ(12deg) translate3d(0,0,0)}50%{transform:rotateY(-48deg) rotateZ(9deg) translate3d(8px,-16px,18px)}}
-    @keyframes orbFloat{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-14px,-22px,0) scale(1.04)}}
-    .network-map{position:absolute;width:min(720px,72vw);height:auto;right:-2%;top:14%;opacity:.58;filter:drop-shadow(0 0 14px rgba(201,217,232,.07))}
-    .network-map path{stroke:rgba(201,217,232,.26);stroke-width:1;fill:none;stroke-dasharray:4 8;animation:networkFlow 16s linear infinite}
-    .network-map circle{fill:#dfe8ef;opacity:.78}
-    .network-map .ring{fill:none;stroke:rgba(223,232,239,.34);transform-origin:center;animation:ringPulse 5s ease-in-out infinite}
-    @keyframes networkFlow{to{stroke-dashoffset:-180}}
-    @keyframes ringPulse{0%,100%{opacity:.18}50%{opacity:.68}}
-    .hero-inner{position:relative;z-index:2;width:100%}
-    .hero-copy{max-width:1040px}
+    .hero-inner{position:relative;z-index:2;width:min(calc(100% - 64px),1040px);text-align:center}
+    .hero-copy{max-width:1000px;margin-inline:auto}
+    .hero-title{max-width:1000px;margin-inline:auto;font-size:clamp(54px,6.8vw,96px);line-height:1.02;letter-spacing:-.06em}
     .hero-title span{display:block}
     .hero-title .tone{color:#8f969f;font-weight:430}
-    .hero-bottom{display:grid;grid-template-columns:minmax(0,660px) 1fr;align-items:end;gap:64px;margin-top:46px}
-    .hero-sub{font-size:clamp(18px,1.8vw,23px);max-width:650px;margin-bottom:28px;color:#aeb3ba}
+    .hero-bottom{max-width:660px;margin:30px auto 0}
+    .hero-sub{font-size:clamp(18px,1.65vw,21px);margin-bottom:26px;color:#aeb3ba}
+    .hero .actions{justify-content:center}
+
+    /* One deliberate route, kept below the copy rather than behind it. */
+    .trade-route{margin:36px auto 0;max-width:920px;pointer-events:none}
+    .trade-route__art{position:relative;transform:translate3d(var(--route-x,0px),var(--route-y,0px),0);transition:transform 1.6s var(--ease)}
+    .trade-route__art::before{content:"";position:absolute;inset:20% 10%;background:radial-gradient(ellipse,rgba(255,255,255,.035),transparent 70%);z-index:-1}
+    .trade-route svg{width:100%;height:auto;overflow:visible}
+    .trade-route .route-track{fill:none;stroke:#81858b;stroke-opacity:.42;stroke-width:1;vector-effect:non-scaling-stroke}
+    .trade-route .route-pulse{fill:none;stroke:#e1e3e6;stroke-width:2;stroke-linecap:round;stroke-dasharray:9 991;animation:tradeFlow 30s linear infinite;animation-play-state:paused}
+    .trade-route .route-node{fill:#b7bbc1;stroke:#151618;stroke-width:5;paint-order:stroke}
+    .trade-route .route-focus{fill:none;stroke:#b7bbc1;stroke-width:1;opacity:.2;animation:tradeFocus 10s ease-in-out infinite;animation-play-state:paused}
+    .trade-route.route-running .route-pulse,.trade-route.route-running .route-focus{animation-play-state:running}
+    .trade-route text{fill:#969ba2;font:14px Inter,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:1.4px;text-anchor:middle}
+    .trade-route .route-mobile{display:none}
+    @keyframes tradeFlow{0%{stroke-dashoffset:0;opacity:0}6%{opacity:.8}94%{opacity:.8}100%{stroke-dashoffset:-1000;opacity:0}}
+    @keyframes tradeFocus{0%,100%{opacity:.14}50%{opacity:.38}}
     .actions{display:flex;flex-wrap:wrap;gap:12px}
     .btn{
       min-height:56px;
@@ -253,18 +238,6 @@
     .btn.secondary:hover{background:rgba(255,255,255,.07);border-color:var(--line-strong)}
     .arrow{font-size:18px;transition:transform .25s var(--ease)}
     .btn:hover .arrow,.mini-link:hover .arrow{transform:translateX(4px)}
-    .hero-proof{justify-self:end;width:min(100%,340px);padding-top:18px;border-top:1px solid var(--line)}
-    .hero-proof__label{display:flex;align-items:center;justify-content:space-between;color:#747b84;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
-    .hero-proof__signal{display:flex;align-items:center;gap:7px}
-    .hero-proof__signal::before{content:"";width:6px;height:6px;border-radius:50%;background:#bfcfdb;box-shadow:0 0 12px rgba(191,207,219,.5)}
-    .hero-proof__flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px}
-    .hero-proof__flow span{position:relative;padding-top:16px;color:#c3c8ce;font-size:11px;letter-spacing:.1em}
-    .hero-proof__flow span::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:rgba(255,255,255,.12)}
-    .hero-proof__flow span::after{content:"";position:absolute;left:0;top:-2px;width:5px;height:5px;border-radius:50%;background:#79818a}
-    .hero-proof__flow span:last-child::after{background:#e8edf1;box-shadow:0 0 12px rgba(255,255,255,.35)}
-    .scroll-cue{position:absolute;right:28px;bottom:34px;display:flex;align-items:center;gap:12px;color:#676d75;font-size:10px;letter-spacing:.18em;text-transform:uppercase;writing-mode:vertical-rl}
-    .scroll-cue::after{content:"";width:1px;height:52px;background:linear-gradient(#777f88,transparent);animation:scrollCue 2.6s ease-in-out infinite}
-    @keyframes scrollCue{0%,100%{transform:scaleY(.55);transform-origin:top;opacity:.45}50%{transform:scaleY(1);opacity:1}}
 
     /* CONNECTED CONTENT */
     .section{position:relative;z-index:1;padding:120px 0;border-top:1px solid rgba(255,255,255,.05)}
@@ -420,9 +393,8 @@
     :focus-visible{outline:2px solid #dce7ef;outline-offset:4px}
 
     @media (max-width:1000px){
-      .hero-stage{inset:80px -12vw 0 38%;opacity:.72}
-      .hero-bottom{grid-template-columns:1fr;gap:40px}
-      .hero-proof{justify-self:start}
+      .hero{padding-top:122px}
+      .trade-route text{font-size:18px}
       .signal-grid{grid-template-columns:1fr 1fr}
       .services{grid-template-columns:1fr}
       .service-main{min-height:460px}
@@ -446,20 +418,21 @@
       .nav-cta{min-height:40px;padding:0 15px}
       .route-line{display:none}
       .ambient-light{display:none}
-      .hero{min-height:auto;padding:132px 0 68px;align-items:flex-start}
-      .hero-grid{background-size:52px 52px;opacity:.38}
-      .hero-stage{inset:58px -48vw auto 24%;height:520px;opacity:.5}
-      .hero-plane--one{width:260px;height:160px}
-      .hero-plane--two{width:150px;height:220px}
-      .hero-plane--three{width:100px;height:100px}
-      .network-map{width:560px;right:-20%}
-      h1{font-size:clamp(54px,16vw,78px);line-height:.89}
+      .hero{min-height:auto;padding:116px 0 40px}
+      .hero-inner{width:calc(100% - 36px)}
+      .hero-grid{background-size:64px 64px;opacity:.12}
+      .hero-title{font-size:clamp(40px,12vw,68px);line-height:1.04}
       h2{font-size:clamp(40px,12vw,58px)}
-      .hero-bottom{margin-top:34px;gap:34px}
+      .hero-bottom{margin-top:24px}
       .hero-sub{font-size:18px}
       .actions .btn{width:100%}
-      .hero-proof{width:100%}
-      .scroll-cue{display:none}
+      .trade-route{max-width:440px;margin-top:32px}
+      .trade-route__art{transform:none!important}
+      .trade-route .route-desktop{display:none}
+      .trade-route .route-mobile{display:block}
+      .trade-route text{font-size:16px;letter-spacing:1px}
+      .trade-route .route-focus{animation:none;opacity:.2}
+      .trade-route .route-pulse{display:none}
       .signal-section{padding:12px 0 72px}
       .signal-grid{gap:8px}
       .signal-card{min-height:220px;padding:20px}
@@ -501,7 +474,9 @@
       html{scroll-behavior:auto}
       *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
       .reveal{opacity:1;transform:none;clip-path:none}
-      .hero-glow{transform:none}
+      .trade-route__art{transform:none!important}
+      .trade-route .route-pulse{display:none}
+      .trade-route .route-focus{animation:none!important;opacity:.2}
       .route-line::after{display:none}
     }
   </style>
@@ -528,21 +503,6 @@
 
   <section class="hero" id="top">
     <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-stage" aria-hidden="true">
-      <div class="hero-plane hero-plane--one"></div>
-      <div class="hero-plane hero-plane--two"></div>
-      <div class="hero-plane hero-plane--three"></div>
-      <svg class="network-map" viewBox="0 0 760 520" role="presentation">
-        <path d="M42 362 C168 248 218 356 314 226 S518 102 724 206" />
-        <path d="M76 128 C214 188 272 102 388 178 S570 360 706 306" />
-        <path d="M128 438 C238 362 322 420 418 326 S556 208 678 124" />
-        <circle cx="42" cy="362" r="4"/><circle cx="314" cy="226" r="4"/><circle cx="724" cy="206" r="4"/>
-        <circle cx="76" cy="128" r="4"/><circle cx="388" cy="178" r="4"/><circle cx="706" cy="306" r="4"/>
-        <circle cx="128" cy="438" r="4"/><circle cx="418" cy="326" r="4"/><circle cx="678" cy="124" r="4"/>
-        <circle class="ring" cx="418" cy="326" r="15"/>
-      </svg>
-    </div>
 
     <div class="container hero-inner">
       <div class="hero-copy">
@@ -557,13 +517,32 @@
             <a class="btn secondary" href="#leistungen">Was wir tun</a>
           </div>
         </div>
-        <div class="hero-proof reveal" data-delay="3" aria-label="Avitpac Prozess">
-          <div class="hero-proof__label"><span>Verbindungsprozess</span><span class="hero-proof__signal">Aktiv</span></div>
-          <div class="hero-proof__flow"><span>Source</span><span>Verify</span><span>Connect</span><span>Trade</span></div>
-        </div>
       </div>
+      <figure class="trade-route" aria-label="Handelsroute: Avitpac führt Quellen über Prüfung und Verbindung zum Handel zwischen Lieferanten und Einkäufern.">
+        <div class="trade-route__art">
+          <svg class="route-desktop" viewBox="0 0 920 150" aria-hidden="true">
+            <defs><path id="trade-path" d="M60 87 C160 87 192 40 315 40 S494 100 590 100 S772 52 860 52" pathLength="1000"/></defs>
+            <use href="#trade-path" class="route-track"/>
+            <use href="#trade-path" class="route-pulse"/>
+            <circle class="route-node" cx="60" cy="87" r="4"/>
+            <circle class="route-node" cx="315" cy="40" r="4"/>
+            <circle class="route-node" cx="590" cy="100" r="4"/>
+            <circle class="route-node" cx="860" cy="52" r="4"/>
+            <circle class="route-focus" cx="315" cy="40" r="12"/>
+            <text x="60" y="120">SOURCE</text><text x="315" y="78">VERIFY</text>
+            <text x="590" y="137">CONNECT</text><text x="860" y="90">TRADE</text>
+          </svg>
+          <svg class="route-mobile" viewBox="0 0 360 112" aria-hidden="true">
+            <path class="route-track" d="M32 62 C92 62 106 32 180 32 S276 62 328 62"/>
+            <circle class="route-node" cx="32" cy="62" r="3.5"/>
+            <circle class="route-node" cx="180" cy="32" r="3.5"/>
+            <circle class="route-node" cx="328" cy="62" r="3.5"/>
+            <circle class="route-focus" cx="180" cy="32" r="10"/>
+            <text x="32" y="96">QUELLE</text><text x="180" y="67">AVITPAC</text><text x="328" y="96">MARKT</text>
+          </svg>
+        </div>
+      </figure>
     </div>
-    <div class="scroll-cue" aria-hidden="true">Entdecken</div>
   </section>
 
   <section class="signal-section" aria-label="Arbeitsweise">
@@ -788,6 +767,37 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   let frameRequested = false;
+
+  // A single trade-flow diagram; pointer depth is bounded and never moves the copy.
+  const hero = document.querySelector(".hero");
+  const tradeRoute = document.querySelector(".trade-route");
+  const routeDesktop = window.matchMedia("(min-width: 1001px)");
+  let routeFrame = 0;
+  let routeX = 0;
+  let routeY = 0;
+  const resetRouteDepth = () => {
+    cancelAnimationFrame(routeFrame);
+    routeFrame = 0;
+    tradeRoute.style.setProperty("--route-x", "0px");
+    tradeRoute.style.setProperty("--route-y", "0px");
+  };
+  hero.addEventListener("pointermove", (event) => {
+    if(!routeDesktop.matches || !finePointer.matches || prefersReducedMotion.matches) return;
+    const bounds = hero.getBoundingClientRect();
+    routeX = ((event.clientX - bounds.left) / bounds.width - .5) * 6;
+    routeY = ((event.clientY - bounds.top) / bounds.height - .5) * 4;
+    if(!routeFrame) routeFrame = requestAnimationFrame(() => {
+      tradeRoute.style.setProperty("--route-x", `${routeX.toFixed(2)}px`);
+      tradeRoute.style.setProperty("--route-y", `${routeY.toFixed(2)}px`);
+      routeFrame = 0;
+    });
+  }, {passive:true});
+  hero.addEventListener("pointerleave", resetRouteDepth);
+  [routeDesktop, finePointer, prefersReducedMotion].forEach(query => query.addEventListener("change", resetRouteDepth));
+  const routeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => tradeRoute.classList.toggle("route-running", entry.isIntersecting));
+  });
+  routeObserver.observe(tradeRoute);
 
   const updateScene = () => {
     const scrollMax = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
