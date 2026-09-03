@@ -3,1713 +3,592 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Avitpac – B2B-Handel und Beschaffung. Nationale und internationale Bezugsquellen, Handelsangebote und direkte Geschäftspartnerschaften." />
+  <meta name="description" content="Avitpac – B2B Sourcing, Handel und Beschaffung. Wir verbinden professionelle Einkäufer mit passenden Bezugsquellen, Lieferanten und Handelsmöglichkeiten." />
   <meta name="theme-color" content="#050505" />
-  <title>Avitpac – B2B Sourcing, Handel & Beschaffung</title>
+  <title>Avitpac – B2B Sourcing & Handel</title>
 
   <style>
     :root{
       --bg:#050505;
-      --bg-soft:#0a0a0a;
-      --bg-card:#080808;
-      --line:rgba(255,255,255,.10);
-      --line-soft:rgba(255,255,255,.055);
+      --panel:#0b0b0c;
+      --panel-2:#111113;
       --text:#f5f5f7;
-      --muted:#96969b;
-      --muted-2:#68686d;
-      --white:#fff;
-      --max:1300px;
-      --radius:24px;
-      --header:88px;
+      --muted:#9a9aa1;
+      --line:rgba(255,255,255,.10);
+      --line-strong:rgba(255,255,255,.18);
+      --glow:rgba(255,255,255,.09);
+      --max:1180px;
+      --radius:28px;
     }
 
     *{box-sizing:border-box}
-
-    html{
-      scroll-behavior:smooth;
-      background:var(--bg);
-    }
-
+    html{scroll-behavior:smooth;background:var(--bg)}
     body{
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(900px 500px at 12% -8%,rgba(255,255,255,.07),transparent 58%),
+        var(--bg);
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Inter,Helvetica,Arial,sans-serif;
       -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
       overflow-x:hidden;
     }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    button,input,select,textarea{
-      font:inherit;
-    }
-
-    button{
-      cursor:pointer;
-    }
-
-    .container{
-      width:min(calc(100% - 48px),var(--max));
-      margin-inline:auto;
-    }
-
-    .eyebrow{
-      color:#9f9fa5;
-      font-size:13px;
-      font-weight:600;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      margin:0 0 26px;
-    }
-
-    h1,h2,h3,p{
-      margin-top:0;
-    }
-
-    h1{
-      font-size:clamp(64px,8vw,126px);
-      line-height:.92;
-      letter-spacing:-.055em;
-      max-width:900px;
-      margin-bottom:34px;
-    }
-
-    h2{
-      font-size:clamp(44px,5.6vw,84px);
-      line-height:.98;
-      letter-spacing:-.045em;
-      margin-bottom:28px;
-    }
-
-    h3{
-      font-size:24px;
-      line-height:1.15;
-      letter-spacing:-.025em;
-      margin-bottom:18px;
-    }
-
-    p{
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.65;
-    }
-
-    .section{
-      position:relative;
-      padding:130px 0;
-      border-top:1px solid var(--line-soft);
-    }
-
-    .section-tight{
-      padding:92px 0;
-    }
-
-    .muted{
-      color:var(--muted);
-    }
-
-    .lead{
-      max-width:760px;
-      font-size:clamp(20px,2vw,27px);
-      line-height:1.48;
-      color:#aaaab0;
-    }
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .container{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
 
     /* HEADER */
-    .site-header{
-      position:fixed;
-      inset:0 0 auto 0;
-      height:var(--header);
-      z-index:1000;
-      display:flex;
-      align-items:center;
-      border-bottom:1px solid transparent;
-      transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;
+    .header{
+      position:fixed;inset:0 0 auto;z-index:50;
+      height:76px;display:flex;align-items:center;
+      transition:.25s ease;
     }
-
-    .site-header.scrolled{
-      background:rgba(5,5,5,.78);
-      border-color:var(--line-soft);
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
+    .header.scrolled{
+      background:rgba(5,5,5,.72);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-
-    .nav{
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      align-items:center;
-      gap:28px;
-      width:100%;
-    }
-
-    .brand{
-      font-size:22px;
-      font-weight:750;
-      letter-spacing:.22em;
-      justify-self:start;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:34px;
-      color:#a5a5aa;
-      font-size:15px;
-    }
-
-    .nav-links a{
-      transition:color .2s ease;
-    }
-
-    .nav-links a:hover{
-      color:#fff;
-    }
-
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:19px;font-weight:800;letter-spacing:.24em}
+    .nav-center{display:flex;gap:28px;color:#a8a8ad;font-size:14px}
+    .nav-center a{transition:color .2s ease}
+    .nav-center a:hover{color:#fff}
     .nav-cta{
-      justify-self:end;
-      border:0;
-      background:#fff;
-      color:#111;
-      padding:14px 24px;
-      border-radius:999px;
-      font-weight:600;
-      transition:transform .2s ease,background .2s ease;
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:44px;padding:0 18px;border-radius:999px;
+      background:#fff;color:#090909;font-size:14px;font-weight:700;
+      transition:transform .18s ease,background .18s ease;
     }
+    .nav-cta:hover{transform:translateY(-1px);background:#ededed}
 
-    .nav-cta:hover{
-      transform:translateY(-1px);
-      background:#ededed;
+    /* TYPO */
+    .eyebrow{
+      margin:0 0 18px;color:#a0a0a6;font-size:12px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.16em;
     }
-
-    .menu-btn{
-      display:none;
-      justify-self:end;
-      border:1px solid var(--line);
-      color:#fff;
-      background:#0a0a0a;
-      border-radius:999px;
-      padding:12px 15px;
+    h1,h2,h3,p{margin-top:0}
+    h1{
+      margin-bottom:24px;max-width:920px;
+      font-size:clamp(56px,8vw,108px);line-height:.92;letter-spacing:-.058em;
     }
-
-    .mobile-menu{
-      display:none;
-      position:fixed;
-      inset:var(--header) 0 auto 0;
-      z-index:999;
-      background:rgba(5,5,5,.98);
-      border-bottom:1px solid var(--line);
-      padding:18px 24px 30px;
+    h2{
+      margin-bottom:18px;font-size:clamp(40px,5vw,68px);
+      line-height:.98;letter-spacing:-.045em;
     }
-
-    .mobile-menu.open{
-      display:block;
-    }
-
-    .mobile-menu a{
-      display:block;
-      padding:16px 0;
-      border-bottom:1px solid var(--line-soft);
-      font-size:20px;
-    }
-
-    /* BUTTONS */
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:36px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:58px;
-      padding:0 28px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      font-weight:650;
-      transition:transform .2s ease,background .2s ease,border-color .2s ease;
-    }
-
-    .btn.primary{
-      background:#fff;
-      color:#111;
-      border-color:#fff;
-    }
-
-    .btn.secondary{
-      background:rgba(255,255,255,.015);
-      color:#fff;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .btn.secondary:hover{
-      background:#111;
-      border-color:rgba(255,255,255,.18);
-    }
+    h3{font-size:20px;letter-spacing:-.025em;margin-bottom:10px}
+    p{color:var(--muted);line-height:1.6}
+    .lead{font-size:clamp(18px,2vw,23px);max-width:760px}
 
     /* HERO */
     .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      padding:calc(var(--header) + 90px) 0 100px;
-      position:relative;
-      overflow:hidden;
+      position:relative;min-height:88vh;display:flex;align-items:center;
+      padding:138px 0 70px;overflow:hidden;
+    }
+    .hero-grid{
+      position:absolute;inset:0;pointer-events:none;opacity:.55;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:74px 74px;
+      mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.7) 52%,transparent 95%);
+      -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.7) 52%,transparent 95%);
+    }
+    .hero-orb{
+      position:absolute;width:560px;height:560px;right:-120px;top:120px;border-radius:50%;
+      background:radial-gradient(circle at 38% 35%,rgba(255,255,255,.12),rgba(255,255,255,.025) 36%,transparent 68%);
+      filter:blur(4px);pointer-events:none;
+    }
+    .hero-inner{position:relative;z-index:1}
+    .hero-sub{font-size:clamp(18px,2.1vw,25px);max-width:760px;margin-bottom:34px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      min-height:56px;padding:0 24px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      border:1px solid var(--line);font-weight:700;transition:.18s ease;
+    }
+    .btn.primary{background:#fff;color:#090909;border-color:#fff}
+    .btn.secondary{background:rgba(255,255,255,.025)}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.secondary:hover{background:#101012;border-color:var(--line-strong)}
+    .arrow{font-size:18px;transition:transform .18s ease}
+    .btn:hover .arrow{transform:translateX(3px)}
+
+    /* TACTILE STRIP */
+    .tactile-wrap{padding:8px 0 86px}
+    .tactile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .tactile{
+      --mx:50%;--my:50%;
+      position:relative;min-height:190px;padding:24px;border:1px solid var(--line);
+      border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#0b0b0d,#080809);
+      transform-style:preserve-3d;will-change:transform;
+      transition:transform .16s ease,border-color .2s ease,background .2s ease;
+      touch-action:manipulation;
+    }
+    .tactile::before{
+      content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s ease;
+      background:radial-gradient(240px circle at var(--mx) var(--my),rgba(255,255,255,.11),transparent 55%);
+    }
+    .tactile:hover{border-color:var(--line-strong);background:#0d0d0f}
+    .tactile:hover::before{opacity:1}
+    .tactile:active{transform:scale(.975)!important}
+    .icon-shell{
+      width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,#151517,#09090a);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 16px 40px rgba(0,0,0,.28);
+      margin-bottom:30px;position:relative;z-index:1;
+    }
+    .icon-shell svg{width:23px;height:23px;stroke:#f0f0f2;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .tactile strong{display:block;font-size:17px;margin-bottom:7px;position:relative;z-index:1}
+    .tactile span{display:block;color:#7e7e84;font-size:14px;line-height:1.45;position:relative;z-index:1}
+
+    /* MAIN SECTIONS */
+    .section{padding:98px 0;border-top:1px solid rgba(255,255,255,.055)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:48px}
+    .section-head p{max-width:520px;margin-bottom:4px}
+
+    .services{display:grid;grid-template-columns:1.12fr .88fr;gap:14px}
+    .service-main,.service-side{
+      border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);
+      position:relative;overflow:hidden;
+    }
+    .service-main{padding:46px;min-height:430px;display:flex;flex-direction:column;justify-content:space-between}
+    .service-side{display:grid;grid-template-rows:1fr 1fr;gap:14px;background:transparent;border:0;overflow:visible}
+    .service-card{border:1px solid var(--line);border-radius:var(--radius);padding:32px;background:var(--panel);position:relative;overflow:hidden}
+    .service-card p,.service-main p{font-size:16px;max-width:560px;margin-bottom:0}
+    .service-number{color:#5d5d63;font-size:12px;letter-spacing:.12em;margin-bottom:38px}
+    .big-mark{
+      width:150px;height:150px;border-radius:50%;border:1px solid rgba(255,255,255,.08);
+      position:absolute;right:-28px;bottom:-36px;
+      box-shadow:0 0 0 24px rgba(255,255,255,.018),0 0 0 48px rgba(255,255,255,.012);
     }
 
-    .grid-bg{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size:88px 88px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.26) 78%,transparent);
-      -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.26) 78%,transparent);
-      pointer-events:none;
+    /* DUAL */
+    .dual{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .dual-card{
+      border:1px solid var(--line);border-radius:var(--radius);padding:40px;min-height:360px;
+      background:linear-gradient(145deg,#0d0d0f,#080809);display:flex;flex-direction:column;justify-content:space-between;
+      transition:transform .22s ease,border-color .22s ease;
     }
+    .dual-card:hover{transform:translateY(-4px);border-color:var(--line-strong)}
+    .dual-card h3{font-size:clamp(28px,3vw,42px);margin-bottom:12px}
+    .dual-card p{max-width:500px}
+    .mini-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;margin-top:20px}
 
-    .hero-glow{
-      position:absolute;
-      width:720px;
-      height:720px;
-      left:38%;
-      top:18%;
-      transform:translate(-50%,-50%);
-      background:radial-gradient(circle,rgba(255,255,255,.07),rgba(255,255,255,0) 68%);
-      filter:blur(2px);
-      pointer-events:none;
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:1;
-      max-width:980px;
-    }
-
-    .hero-sub{
-      max-width:840px;
-      font-size:clamp(20px,2.1vw,28px);
-      line-height:1.5;
-      color:#9d9da3;
-    }
-
-    /* STATEMENT */
-    .statement{
-      min-height:92vh;
-      display:flex;
-      align-items:center;
-    }
-
-    .statement-copy{
-      max-width:1100px;
-    }
-
-    .statement-list{
-      margin-top:56px;
-      display:grid;
-      gap:18px;
-    }
-
-    .statement-line{
-      font-size:clamp(30px,4vw,60px);
-      line-height:1.08;
-      font-weight:700;
-      letter-spacing:-.035em;
-      color:#505055;
-      transition:color .5s ease,transform .5s ease;
-    }
-
-    .statement-line.visible{
-      color:#f1f1f3;
-      transform:translateX(8px);
-    }
-
-    .statement-final{
-      margin-top:58px;
-      font-size:clamp(38px,5vw,76px);
-      font-weight:750;
-      line-height:1.03;
-      letter-spacing:-.045em;
-    }
-
-    /* COMPETENCIES */
-    .cards-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      border:1px solid var(--line);
-      margin-top:70px;
-    }
-
-    .card{
-      min-height:330px;
-      padding:52px;
-      background:rgba(0,0,0,.16);
-      border-right:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      transition:background .25s ease;
-    }
-
-    .card:nth-child(2n){
-      border-right:0;
-    }
-
-    .card:nth-last-child(-n+2){
-      border-bottom:0;
-    }
-
-    .card:hover{
-      background:#0b0b0b;
-    }
-
-    .card-index{
-      display:block;
-      color:#5f5f65;
-      font-size:15px;
-      letter-spacing:.08em;
-      margin-bottom:28px;
-    }
-
-    .card p{
-      max-width:520px;
-    }
-
-    .card-kicker{
-      color:#d7d7da;
-      font-size:16px;
-      font-weight:600;
-      margin-bottom:14px;
-    }
-
-    /* SOURCING PROCESS */
-    .split{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:90px;
-      align-items:start;
-    }
-
-    .pill-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin:28px 0 8px;
-    }
-
-    .pill{
-      color:#bbbcc1;
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:9px 14px;
-      font-size:14px;
-    }
-
+    /* PROCESS */
     .process{
-      position:relative;
-      padding-left:30px;
+      display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);
+      border-radius:var(--radius);overflow:hidden;background:#080809;
     }
-
-    .process::before{
-      content:"";
-      position:absolute;
-      left:50px;
-      top:33px;
-      bottom:33px;
-      width:1px;
-      background:linear-gradient(to bottom,transparent,var(--line),var(--line),transparent);
+    .process-step{padding:30px;min-height:180px;border-right:1px solid var(--line);position:relative}
+    .process-step:last-child{border-right:0}
+    .step-no{font-size:12px;color:#5f5f65;letter-spacing:.12em;margin-bottom:44px}
+    .process-step strong{font-size:18px}
+    .pulse{
+      width:7px;height:7px;border-radius:50%;background:#fff;position:absolute;right:22px;top:22px;
+      box-shadow:0 0 0 0 rgba(255,255,255,.2);animation:pulse 2.4s infinite;
     }
-
-    .step{
-      position:relative;
-      display:grid;
-      grid-template-columns:74px 1fr;
-      gap:20px;
-      align-items:center;
-      min-height:114px;
-    }
-
-    .step-num{
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      border:1px solid var(--line);
-      background:#060606;
-      display:grid;
-      place-items:center;
-      color:#9f9fa4;
-      z-index:1;
-    }
-
-    .step-title{
-      color:#dcdce0;
-      font-weight:600;
-    }
-
-    /* BUYERS */
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-      margin-top:60px;
-    }
-
-    .feature{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:34px;
-      min-height:170px;
-      background:rgba(255,255,255,.01);
-    }
-
-    .feature h3{
-      font-size:20px;
-    }
-
-    .feature p{
-      font-size:16px;
-      margin-bottom:0;
-    }
-
-    /* SUPPLIERS */
-    .check-box{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:48px;
-      background:rgba(255,255,255,.012);
-    }
-
-    .check-title{
-      color:#626268;
-      font-size:13px;
-      letter-spacing:.15em;
-      margin-bottom:24px;
-    }
-
-    .check-item{
-      display:grid;
-      grid-template-columns:42px 1fr;
-      gap:16px;
-      padding:15px 0;
-      border-bottom:1px solid var(--line-soft);
-    }
-
-    .check-item:last-child{
-      border-bottom:0;
-    }
-
-    .check-num{
-      color:#4f4f54;
-    }
-
-    .check-item strong{
-      color:#dddde1;
-      font-weight:560;
-    }
-
-    /* WHY */
-    .why-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      border:1px solid var(--line);
-      margin-top:62px;
-    }
-
-    .why{
-      padding:42px;
-      min-height:220px;
-      border-right:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-    }
-
-    .why:nth-child(3n){
-      border-right:0;
-    }
-
-    .why:nth-last-child(-n+3){
-      border-bottom:0;
-    }
-
-    .why h3{
-      font-size:19px;
-    }
-
-    .why p{
-      font-size:16px;
-      margin-bottom:0;
-    }
-
-    /* TRUST */
-    .trust-strip{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      margin-top:56px;
-    }
-
-    .trust{
-      padding:36px 26px;
-      border-right:1px solid var(--line);
-    }
-
-    .trust:last-child{
-      border-right:0;
-    }
-
-    .trust strong{
-      display:block;
-      font-size:17px;
-      margin-bottom:11px;
-    }
-
-    .trust span{
-      display:block;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:14px;
-    }
-
-    /* BRAND STATEMENT */
-    .brand-statement{
-      min-height:92vh;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      overflow:hidden;
-    }
-
-    .brand-stack{
-      display:grid;
-      gap:4px;
-    }
-
-    .brand-word{
-      font-size:clamp(68px,12vw,190px);
-      line-height:.84;
-      letter-spacing:-.07em;
-      font-weight:770;
-    }
-
-    .brand-mini{
-      color:#66666c;
-      letter-spacing:.25em;
-      text-transform:uppercase;
-      margin-top:44px;
-      font-size:13px;
-    }
-
-    /* ABOUT */
-    .about-copy{
-      max-width:840px;
-    }
-
-    .about-list{
-      display:grid;
-      gap:9px;
-      margin:40px 0;
-      padding-left:24px;
-      border-left:1px solid var(--line);
-    }
-
-    .about-list span{
-      font-size:22px;
-      font-weight:600;
-      color:#ededf0;
-      padding:6px 0;
-    }
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.18)}70%{box-shadow:0 0 0 12px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 
     /* CONTACT */
-    .contact{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:90px;
-      align-items:start;
+    .contact-shell{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:start;
+      padding:54px;border:1px solid var(--line);border-radius:32px;
+      background:linear-gradient(145deg,#0e0e10,#080809);position:relative;overflow:hidden;
     }
-
-    .contact-person{
-      margin-top:42px;
-      padding-top:28px;
-      border-top:1px solid var(--line);
-      max-width:460px;
+    .contact-shell::after{
+      content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-180px;top:-160px;
+      background:radial-gradient(circle,rgba(255,255,255,.08),transparent 68%);pointer-events:none;
     }
-
-    .contact-person strong{
-      display:block;
-      margin-bottom:8px;
-    }
-
-    .contact-person span{
-      display:block;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:15px;
-    }
-
-    .contact-person .btn-row .btn{
-      min-height:52px;
-      padding:0 22px;
-    }
-
-    .form{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
+    .contact-meta{margin-top:30px;display:grid;gap:8px;color:#a2a2a8;font-size:15px}
+    .contact-meta strong{color:#f1f1f3;font-weight:650}
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:1}
     .field{
-      width:100%;
-      min-height:60px;
-      background:#050505;
-      border:1px solid var(--line);
-      color:#fff;
-      border-radius:16px;
-      padding:0 20px;
-      outline:none;
-      transition:border-color .2s ease,background .2s ease;
+      width:100%;min-height:58px;border-radius:15px;border:1px solid var(--line);
+      background:#060607;color:#fff;padding:0 17px;outline:none;transition:.2s ease;
     }
-
-    .field:focus{
-      border-color:rgba(255,255,255,.28);
-      background:#090909;
-    }
-
-    textarea.field{
-      min-height:170px;
-      padding-top:18px;
-      resize:vertical;
-    }
-
-    .full{
-      grid-column:1/-1;
-    }
-
+    .field:focus{border-color:rgba(255,255,255,.28);background:#0a0a0b}
+    textarea.field{padding-top:16px;min-height:140px;resize:vertical}
+    .full{grid-column:1/-1}
     .submit{
-      grid-column:1/-1;
-      border:0;
-      min-height:60px;
-      border-radius:999px;
-      background:#fff;
-      color:#111;
-      font-weight:650;
-      margin-top:6px;
-      transition:transform .2s ease,background .2s ease;
+      grid-column:1/-1;min-height:58px;border:0;border-radius:999px;background:#fff;color:#090909;
+      font-weight:750;transition:transform .18s ease,opacity .18s ease;
     }
-
-    .submit:hover{
-      transform:translateY(-2px);
-      background:#ececec;
-    }
-
-    .submit:disabled{
-      opacity:.62;
-      cursor:wait;
-      transform:none;
-    }
-
-    .form-note{
-      grid-column:1/-1;
-      color:#737378;
-      font-size:13px;
-      margin:2px 0 0;
-    }
+    .submit:hover{transform:translateY(-2px)}
+    .submit:disabled{opacity:.65;cursor:wait;transform:none}
+    .form-note{grid-column:1/-1;color:#77777d;font-size:12px;margin:0 4px}
 
     /* FOOTER */
-    footer{
-      border-top:1px solid var(--line);
-      padding:84px 0 36px;
-      background:#030303;
-    }
+    footer{padding:42px 0 34px;border-top:1px solid rgba(255,255,255,.055)}
+    .footer{display:flex;justify-content:space-between;align-items:center;gap:28px;color:#6f6f75;font-size:13px}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a:hover{color:#fff}
 
-    .footer-main{
-      display:grid;
-      grid-template-columns:1.8fr 1fr 1fr 1fr;
-      gap:50px;
-    }
-
-    .footer-brand{
-      font-size:22px;
-      font-weight:760;
-      letter-spacing:.2em;
-      margin-bottom:14px;
-    }
-
-    .footer-tag{
-      color:#8a8a90;
-      letter-spacing:.12em;
-      font-size:13px;
-      text-transform:uppercase;
-    }
-
-    .footer-col h4{
-      color:#66666c;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:12px;
-      margin:0 0 18px;
-    }
-
-    .footer-col a{
-      display:block;
-      color:#909096;
-      padding:7px 0;
-      font-size:15px;
-    }
-
-    .footer-col a:hover{
-      color:#fff;
-    }
-
-    .footer-bottom{
-      margin-top:70px;
-      padding-top:28px;
-      border-top:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      color:#66666c;
-      font-size:13px;
-    }
-
-    /* DIALOGS */
+    /* DIALOG */
     dialog{
-      width:min(760px,calc(100% - 32px));
-      border:1px solid var(--line);
-      background:#090909;
-      color:#fff;
-      border-radius:24px;
-      padding:0;
+      width:min(700px,calc(100% - 28px));border:1px solid var(--line);border-radius:24px;
+      background:#0b0b0c;color:#fff;padding:0;
     }
-
-    dialog::backdrop{
-      background:rgba(0,0,0,.72);
-      backdrop-filter:blur(8px);
-    }
-
-    .dialog-inner{
-      padding:36px;
-    }
-
-    .dialog-inner p,
-    .dialog-inner li{
-      color:#a5a5aa;
-      line-height:1.65;
-      font-size:15px;
-    }
-
-    .dialog-close{
-      float:right;
-      border:1px solid var(--line);
-      background:#111;
-      color:#fff;
-      border-radius:999px;
-      padding:9px 13px;
-    }
-
-    .placeholder{
-      display:inline-block;
-      background:rgba(255,209,0,.12);
-      border:1px solid rgba(255,209,0,.22);
-      color:#f3d764;
-      border-radius:7px;
-      padding:2px 6px;
-      font-size:.92em;
-    }
+    dialog::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(8px)}
+    .dialog-inner{padding:32px}
+    .dialog-inner h2{font-size:34px}
+    .dialog-inner p{font-size:14px}
+    .dialog-close{float:right;border:1px solid var(--line);border-radius:999px;background:#141416;color:#fff;padding:9px 13px}
+    .placeholder{display:inline-block;border:1px solid rgba(255,255,255,.13);border-radius:7px;padding:2px 6px;color:#b7b7bc;background:#111113}
 
     /* REVEAL */
-    .reveal{
-      opacity:0;
-      transform:translateY(24px);
-      transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+
+    @media (max-width:900px){
+      .nav-center{display:none}
+      .services,.contact-shell{grid-template-columns:1fr}
+      .dual{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .process-step:nth-child(2){border-right:0}
+      .process-step:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .tactile-grid{grid-template-columns:1fr 1fr}
+      .section-head{display:block}
+      .section-head p{margin-top:18px}
     }
 
-    .reveal.in{
-      opacity:1;
-      transform:none;
+    @media (max-width:620px){
+      .container{width:min(calc(100% - 26px),var(--max))}
+      .header{height:68px}
+      .brand{font-size:17px}
+      .nav-cta{min-height:40px;padding:0 15px}
+      .hero{min-height:auto;padding:124px 0 54px}
+      h1{font-size:clamp(52px,15vw,72px)}
+      .hero-sub{font-size:18px}
+      .actions .btn{width:100%}
+      .tactile-wrap{padding-bottom:64px}
+      .tactile-grid{grid-template-columns:1fr 1fr;gap:9px}
+      .tactile{min-height:170px;padding:18px}
+      .icon-shell{margin-bottom:24px}
+      .section{padding:74px 0}
+      .service-main{padding:30px;min-height:350px}
+      .service-card{padding:28px}
+      .dual-card{padding:30px;min-height:320px}
+      .process{grid-template-columns:1fr}
+      .process-step{border-right:0!important;border-bottom:1px solid var(--line)!important;min-height:140px}
+      .process-step:last-child{border-bottom:0!important}
+      .step-no{margin-bottom:28px}
+      .contact-shell{padding:28px 20px;gap:38px}
+      .form{grid-template-columns:1fr}
+      .full,.submit,.form-note{grid-column:1}
+      .footer{align-items:flex-start;flex-direction:column}
+      .footer-links{flex-wrap:wrap}
+    }
+
+    @media (max-width:390px){
+      .tactile-grid{grid-template-columns:1fr}
+      .tactile{min-height:150px}
     }
 
     @media (prefers-reduced-motion:reduce){
-      *{
-        scroll-behavior:auto!important;
-        animation:none!important;
-        transition:none!important;
-      }
-      .reveal{
-        opacity:1;
-        transform:none;
-      }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width:1050px){
-      .nav{
-        grid-template-columns:1fr auto;
-      }
-
-      .nav-links,.nav-cta{
-        display:none;
-      }
-
-      .menu-btn{
-        display:block;
-      }
-
-      .split,
-      .contact{
-        grid-template-columns:1fr;
-        gap:58px;
-      }
-
-      .why-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .why:nth-child(3n){
-        border-right:1px solid var(--line);
-      }
-
-      .why:nth-child(2n){
-        border-right:0;
-      }
-
-      .why:nth-last-child(-n+3){
-        border-bottom:1px solid var(--line);
-      }
-
-      .why:nth-last-child(-n+2){
-        border-bottom:0;
-      }
-
-      .trust-strip{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .trust:nth-child(2){
-        border-right:0;
-      }
-
-      .trust:nth-child(-n+2){
-        border-bottom:1px solid var(--line);
-      }
-
-      .footer-main{
-        grid-template-columns:1.4fr 1fr 1fr;
-      }
-
-      .footer-main > :last-child{
-        grid-column:2;
-      }
-    }
-
-    @media (max-width:720px){
-      :root{
-        --header:74px;
-      }
-
-      .container{
-        width:min(calc(100% - 30px),var(--max));
-      }
-
-      .section{
-        padding:92px 0;
-      }
-
-      .hero{
-        min-height:auto;
-        padding:calc(var(--header) + 72px) 0 92px;
-      }
-
-      h1{
-        font-size:clamp(54px,16vw,76px);
-      }
-
-      h2{
-        font-size:clamp(42px,12vw,60px);
-      }
-
-      p{
-        font-size:16px;
-      }
-
-      .hero-sub{
-        font-size:18px;
-      }
-
-      .cards-grid,
-      .feature-grid,
-      .why-grid,
-      .trust-strip{
-        grid-template-columns:1fr;
-      }
-
-      .card{
-        min-height:auto;
-        padding:34px 26px;
-        border-right:0!important;
-        border-bottom:1px solid var(--line)!important;
-      }
-
-      .card:last-child{
-        border-bottom:0!important;
-      }
-
-      .feature{
-        min-height:auto;
-      }
-
-      .why{
-        border-right:0!important;
-        border-bottom:1px solid var(--line)!important;
-      }
-
-      .why:last-child{
-        border-bottom:0!important;
-      }
-
-      .trust{
-        border-right:0!important;
-        border-bottom:1px solid var(--line)!important;
-      }
-
-      .trust:last-child{
-        border-bottom:0!important;
-      }
-
-      .process{
-        padding-left:0;
-      }
-
-      .process::before{
-        left:22px;
-      }
-
-      .step{
-        grid-template-columns:56px 1fr;
-      }
-
-      .form{
-        grid-template-columns:1fr;
-      }
-
-      .full,.submit,.form-note{
-        grid-column:1;
-      }
-
-      .footer-main{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .footer-main > :first-child{
-        grid-column:1/-1;
-        margin-bottom:20px;
-      }
-
-      .footer-main > :last-child{
-        grid-column:auto;
-      }
-
-      .footer-bottom{
-        flex-direction:column;
-      }
-    }
-
-    @media (max-width:480px){
-      .btn{
-        width:100%;
-      }
-
-      .brand{
-        font-size:19px;
-      }
-
-      .footer-main{
-        grid-template-columns:1fr;
-      }
-
-      .footer-main > *{
-        grid-column:auto!important;
-      }
+      *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
     }
   </style>
 </head>
 
 <body>
-
-<header class="site-header" id="header">
+<header class="header" id="header">
   <div class="container nav">
     <a class="brand" href="#top" aria-label="Avitpac Startseite">AVITPAC</a>
-
-    <nav class="nav-links" aria-label="Hauptnavigation">
-      <a href="#unternehmen">Unternehmen</a>
+    <nav class="nav-center" aria-label="Hauptnavigation">
       <a href="#leistungen">Leistungen</a>
-      <a href="#einkaeufer">Für Einkäufer</a>
-      <a href="#lieferanten">Für Lieferanten</a>
+      <a href="#partner">Partner</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-
-    <a class="nav-cta" href="#kontakt">Geschäftsanfrage</a>
-
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menü</button>
+    <a class="nav-cta" href="#kontakt">Anfrage stellen</a>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
-  <a href="#unternehmen">Unternehmen</a>
-  <a href="#leistungen">Leistungen</a>
-  <a href="#einkaeufer">Für Einkäufer</a>
-  <a href="#lieferanten">Für Lieferanten</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
-
 <main id="top">
-
-  <!-- HERO -->
   <section class="hero">
-    <div class="grid-bg"></div>
-    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">B2B Sourcing · Handel · Beschaffung</p>
+      <h1 class="reveal">Handel beginnt mit der richtigen Verbindung.</h1>
+      <p class="hero-sub reveal">
+        Avitpac verbindet professionelle Einkäufer mit passenden Bezugsquellen, Lieferanten und Handelsmöglichkeiten – direkt, flexibel und international.
+      </p>
+      <div class="actions reveal">
+        <a class="btn primary" href="#kontakt">Geschäftsanfrage <span class="arrow">→</span></a>
+        <a class="btn secondary" href="#leistungen">Was wir tun</a>
+      </div>
+    </div>
+  </section>
 
-    <div class="container">
-      <div class="hero-content reveal">
-        <p class="eyebrow">B2B Sourcing · Handel · Beschaffung</p>
-        <h1>Handel beginnt mit der richtigen Verbindung.</h1>
-        <p class="hero-sub">
-          Avitpac ist ein B2B-Handels- und Beschaffungsunternehmen.
-          Wir erschließen nationale und internationale Bezugsquellen,
-          entwickeln Handelsangebote und bringen Hersteller, Lieferanten
-          und professionelle Einkäufer zusammen.
-        </p>
-
-        <div class="btn-row">
-          <a class="btn primary" href="#kontakt">Geschäftsanfrage stellen</a>
-          <a class="btn secondary" href="#unternehmen">Avitpac kennenlernen</a>
+  <section class="tactile-wrap" aria-label="Arbeitsweise">
+    <div class="container tactile-grid">
+      <article class="tactile reveal">
+        <div class="icon-shell" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/><path d="M8.5 11h5M11 8.5v5"/></svg>
         </div>
-      </div>
+        <strong>Source</strong><span>Bezugsquellen gezielt identifizieren.</span>
+      </article>
+      <article class="tactile reveal">
+        <div class="icon-shell" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7"/><path d="M4 4h16v16H4z"/></svg>
+        </div>
+        <strong>Verify</strong><span>Mengen, Konditionen und Eignung prüfen.</span>
+      </article>
+      <article class="tactile reveal">
+        <div class="icon-shell" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 7h10M4 17h16M14 7l3-3m-3 3 3 3M10 17l-3-3m3 3-3 3"/></svg>
+        </div>
+        <strong>Connect</strong><span>Die richtigen Geschäftspartner zusammenbringen.</span>
+      </article>
+      <article class="tactile reveal">
+        <div class="icon-shell" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 7h12v10H3z"/><path d="M15 10h3l3 3v4h-6"/><circle cx="7" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/></svg>
+        </div>
+        <strong>Trade</strong><span>Aus Möglichkeiten konkrete Geschäfte entwickeln.</span>
+      </article>
     </div>
   </section>
 
-  <!-- STATEMENT -->
-  <section class="section statement" id="unternehmen">
-    <div class="container statement-copy">
-      <p class="eyebrow reveal">Unser Ansatz</p>
-      <h2 class="reveal">Wir handeln nicht einfach mit Ware.</h2>
-
-      <div class="statement-list" aria-label="Arbeitsweise">
-        <div class="statement-line">Wir recherchieren Bezugsquellen.</div>
-        <div class="statement-line">Wir sprechen mit Herstellern und Distributoren.</div>
-        <div class="statement-line">Wir prüfen Mengen und Konditionen.</div>
-        <div class="statement-line">Wir vergleichen Beschaffungsmöglichkeiten.</div>
-        <div class="statement-line">Wir bringen Angebot und Nachfrage zusammen.</div>
-      </div>
-
-      <div class="statement-final reveal">Aus einer Anfrage wird eine Handelslösung.</div>
-    </div>
-  </section>
-
-  <!-- COMPETENCIES -->
   <section class="section" id="leistungen">
     <div class="container">
-      <p class="eyebrow reveal">Kernkompetenzen</p>
-      <h2 class="reveal">Was wir bewegen.</h2>
-
-      <div class="cards-grid">
-        <article class="card reveal">
-          <span class="card-index">01</span>
-          <h3>Sourcing</h3>
-          <div class="card-kicker">Die richtige Bezugsquelle entscheidet.</div>
-          <p>
-            Wir identifizieren Hersteller, Distributoren und Lieferanten im
-            nationalen und internationalen Markt und prüfen Verfügbarkeit,
-            Mengen, Konditionen und Eignung für die jeweilige Anfrage.
-          </p>
-        </article>
-
-        <article class="card reveal">
-          <span class="card-index">02</span>
-          <h3>B2B-Handel</h3>
-          <div class="card-kicker">Aus Möglichkeiten werden Geschäfte.</div>
-          <p>
-            Wir bringen Angebot, Nachfrage, Mengen und Konditionen zusammen
-            und entwickeln daraus wirtschaftlich sinnvolle Handelsangebote
-            für professionelle Geschäftspartner.
-          </p>
-        </article>
-
-        <article class="card reveal">
-          <span class="card-index">03</span>
-          <h3>Markt &amp; Sortiment</h3>
-          <div class="card-kicker">Chancen entstehen dort, wo sich Märkte bewegen.</div>
-          <p>
-            Wir beobachten Produkte, Sortimente und Marktbewegungen und prüfen,
-            welche Möglichkeiten für bestehende oder neue Geschäftspartner
-            interessant sein können.
-          </p>
-        </article>
-
-        <article class="card reveal">
-          <span class="card-index">04</span>
-          <h3>Partnerschaften</h3>
-          <div class="card-kicker">Gute Geschäfte brauchen verlässliche Beziehungen.</div>
-          <p>
-            Wir bauen direkte Beziehungen zu Herstellern, Lieferanten,
-            Distributoren und Handelsunternehmen auf – mit dem Ziel
-            wiederkehrender und langfristiger Zusammenarbeit.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCUREMENT -->
-  <section class="section">
-    <div class="container split">
-      <div>
-        <p class="eyebrow reveal">Beschaffung</p>
-        <h2 class="reveal">Sie suchen etwas?</h2>
-        <h3 class="reveal" style="font-size:clamp(28px,3vw,42px);color:#cfcfd4;">Wir prüfen, was möglich ist.</h3>
-
-        <p class="reveal">
-          Nicht jede Beschaffungsanfrage lässt sich mit einem bestehenden
-          Katalog beantworten. Deshalb betrachten wir Anforderungen individuell.
-        </p>
-
-        <div class="pill-list reveal">
-          <span class="pill">Produkt</span>
-          <span class="pill">Menge</span>
-          <span class="pill">Zielpreis</span>
-          <span class="pill">Lieferzeit</span>
-          <span class="pill">Herkunft</span>
-          <span class="pill">Markt</span>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow reveal">Leistungen</p>
+          <h2 class="reveal">Was wir bewegen.</h2>
         </div>
-
-        <p class="reveal">
-          Auf dieser Grundlage recherchieren wir geeignete Bezugsquellen,
-          prüfen Lieferanten, Verfügbarkeit und Konditionen und bewerten,
-          ob sich daraus eine wirtschaftlich sinnvolle Beschaffungslösung
-          entwickeln lässt.
-        </p>
-
-        <div class="btn-row reveal">
-          <a class="btn primary" href="#kontakt">Beschaffungsanfrage stellen</a>
-        </div>
+        <p class="reveal">Kein starrer Produktkatalog. Wir arbeiten an der konkreten Anfrage und prüfen, welche Beschaffungs- und Handelslösung wirtschaftlich Sinn ergibt.</p>
       </div>
 
-      <div class="process reveal" aria-label="Beschaffungsprozess">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-title">Anfrage</div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-title">Markt &amp; Bezugsquellen prüfen</div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-title">Konditionen &amp; Verfügbarkeit</div>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <div class="step-title">Angebot</div>
-        </div>
-        <div class="step">
-          <div class="step-num">05</div>
-          <div class="step-title">Abwicklung</div>
+      <div class="services">
+        <article class="service-main reveal">
+          <div>
+            <div class="service-number">01 / SOURCING</div>
+            <h3 style="font-size:clamp(32px,4vw,52px);">Die passende Bezugsquelle finden.</h3>
+            <p>Wir recherchieren Hersteller, Distributoren und Lieferanten national wie international und prüfen Verfügbarkeit, Mengen, Konditionen und Beschaffungswege.</p>
+          </div>
+          <div class="big-mark"></div>
+        </article>
+
+        <div class="service-side">
+          <article class="service-card reveal">
+            <div class="service-number">02 / HANDEL</div>
+            <h3>B2B-Handelsangebote</h3>
+            <p>Wir bringen Angebot, Nachfrage und Konditionen zu einem belastbaren Geschäft zusammen.</p>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-number">03 / PARTNERSCHAFT</div>
+            <h3>Direkte Beziehungen</h3>
+            <p>Wir bauen Kontakte zu Einkäufern, Lieferanten und Herstellern mit Blick auf wiederkehrende Zusammenarbeit auf.</p>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BUYERS -->
-  <section class="section" id="einkaeufer">
+  <section class="section" id="partner">
     <div class="container">
-      <p class="eyebrow reveal">Für Einkäufer</p>
-      <h2 class="reveal">Mehr Möglichkeiten für Ihren Einkauf.</h2>
-      <p class="lead reveal">
-        Avitpac unterstützt professionelle Einkäufer dabei, zusätzliche
-        Bezugsquellen und Handelsmöglichkeiten zu erschließen. Von der
-        konkreten Beschaffungsanfrage bis zur Identifikation interessanter
-        neuer Sortimente prüfen wir Märkte, Lieferanten, Mengen und
-        Konditionen individuell.
-      </p>
+      <p class="eyebrow reveal">Für Geschäftspartner</p>
+      <div class="dual">
+        <article class="dual-card reveal">
+          <div>
+            <h3>Für Einkäufer.</h3>
+            <p>Sie suchen ein Produkt, eine alternative Bezugsquelle oder bessere Konditionen? Nennen Sie uns Produkt, Menge, Zielpreis und Zeitrahmen.</p>
+          </div>
+          <a class="mini-link" href="#kontakt">Beschaffung anfragen <span class="arrow">→</span></a>
+        </article>
 
-      <div class="feature-grid">
-        <div class="feature reveal">
-          <h3>Direkte Kommunikation</h3>
-          <p>Kurze Wege und ein direkter Ansprechpartner statt unnötiger Zwischenstufen.</p>
-        </div>
-
-        <div class="feature reveal">
-          <h3>Flexible Beschaffung</h3>
-          <p>Wir prüfen unterschiedliche Lieferanten, Märkte und Beschaffungswege anhand der tatsächlichen Anforderungen.</p>
-        </div>
-
-        <div class="feature reveal">
-          <h3>Individuelle Anfragen</h3>
-          <p>Produkt, Menge, Zielpreis, Lieferzeit und weitere Anforderungen werden projektbezogen betrachtet.</p>
-        </div>
-
-        <div class="feature reveal">
-          <h3>Alternative Bezugsquellen</h3>
-          <p>Ist eine Möglichkeit nicht geeignet, prüfen wir weitere Beschaffungsoptionen.</p>
-        </div>
-      </div>
-
-      <div class="btn-row reveal">
-        <a class="btn primary" href="#kontakt">Beschaffungsanfrage stellen</a>
+        <article class="dual-card reveal">
+          <div>
+            <h3>Für Lieferanten.</h3>
+            <p>Sie verfügen über ein interessantes Sortiment oder attraktive Konditionen? Stellen Sie uns Ihr Angebot für mögliche Handels- und Absatzchancen vor.</p>
+          </div>
+          <a class="mini-link" href="#kontakt">Sortiment vorstellen <span class="arrow">→</span></a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- SUPPLIERS -->
-  <section class="section" id="lieferanten">
-    <div class="container split">
-      <div>
-        <p class="eyebrow reveal">Für Lieferanten</p>
-        <h2 class="reveal">Gute Produkte brauchen die richtigen Märkte.</h2>
-        <p class="reveal">
-          Avitpac arbeitet mit Herstellern, Distributoren und Lieferanten
-          zusammen, die professionelle Absatzmöglichkeiten erschließen und
-          langfristige Handelsbeziehungen entwickeln möchten.
-        </p>
-        <p class="reveal">
-          Wir betrachten Produkte und Sortimente hinsichtlich Markt,
-          Konditionen, Verfügbarkeit und möglicher Handelskanäle.
-        </p>
-
-        <div class="btn-row reveal">
-          <a class="btn primary" href="#kontakt">Sortiment vorstellen</a>
-        </div>
-      </div>
-
-      <div class="check-box reveal">
-        <div class="check-title">Was wir gemeinsam prüfen</div>
-
-        <div class="check-item">
-          <div class="check-num">01</div>
-          <div><strong>Sortiment &amp; Positionierung</strong><br><span class="muted">Welche Produkte und Sortimente stehen zur Verfügung?</span></div>
-        </div>
-
-        <div class="check-item">
-          <div class="check-num">02</div>
-          <div><strong>Zielmärkte</strong><br><span class="muted">Für welche Märkte und Handelskanäle ist das Angebot interessant?</span></div>
-        </div>
-
-        <div class="check-item">
-          <div class="check-num">03</div>
-          <div><strong>Mengen &amp; Verfügbarkeit</strong><br><span class="muted">Welche Mengen können zuverlässig bereitgestellt werden?</span></div>
-        </div>
-
-        <div class="check-item">
-          <div class="check-num">04</div>
-          <div><strong>Konditionen</strong><br><span class="muted">Welche Einkaufs- und Staffelpreise sind möglich?</span></div>
-        </div>
-
-        <div class="check-item">
-          <div class="check-num">05</div>
-          <div><strong>Dokumentation</strong><br><span class="muted">Welche relevanten Produkt- und Handelsunterlagen stehen zur Verfügung?</span></div>
-        </div>
-
-        <div class="check-item">
-          <div class="check-num">06</div>
-          <div><strong>Zusammenarbeit</strong><br><span class="muted">Wie kann daraus eine langfristige Handelsbeziehung entstehen?</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
   <section class="section">
     <div class="container">
-      <p class="eyebrow reveal">Warum Avitpac</p>
-      <h2 class="reveal">Direkt. Flexibel. Lösungsorientiert.</h2>
-
-      <div class="why-grid">
-        <div class="why reveal">
-          <h3>Direkt</h3>
-          <p>Kurze Kommunikationswege und persönliche Betreuung ohne unnötige Zwischenstufen.</p>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow reveal">So arbeiten wir</p>
+          <h2 class="reveal">Kurz. Klar. Direkt.</h2>
         </div>
-
-        <div class="why reveal">
-          <h3>Flexibel</h3>
-          <p>Beschaffung wird anhand der tatsächlichen Anforderungen geprüft – nicht anhand eines starren Produktkatalogs.</p>
-        </div>
-
-        <div class="why reveal">
-          <h3>Lösungsorientiert</h3>
-          <p>Ist eine Bezugsquelle nicht geeignet, prüfen wir weitere Möglichkeiten.</p>
-        </div>
-
-        <div class="why reveal">
-          <h3>International</h3>
-          <p>Wir berücksichtigen nationale und internationale Lieferanten und Beschaffungsmärkte.</p>
-        </div>
-
-        <div class="why reveal">
-          <h3>Marktbezogen</h3>
-          <p>Preis, Menge, Nachfrage, Verfügbarkeit und wirtschaftliches Potenzial werden gemeinsam betrachtet.</p>
-        </div>
-
-        <div class="why reveal">
-          <h3>Partnerschaftlich</h3>
-          <p>Unser Ziel sind Geschäftsbeziehungen, die über einzelne Transaktionen hinausgehen.</p>
-        </div>
+      </div>
+      <div class="process reveal">
+        <div class="process-step"><span class="pulse"></span><div class="step-no">01</div><strong>Anfrage verstehen</strong></div>
+        <div class="process-step"><div class="step-no">02</div><strong>Markt & Quellen prüfen</strong></div>
+        <div class="process-step"><div class="step-no">03</div><strong>Konditionen abstimmen</strong></div>
+        <div class="process-step"><div class="step-no">04</div><strong>Geschäft umsetzen</strong></div>
       </div>
     </div>
   </section>
 
-  <!-- TRUST -->
-  <section class="section section-tight">
-    <div class="container">
-      <p class="eyebrow reveal">Verlässlichkeit</p>
-      <h2 class="reveal">Handel braucht klare Grundlagen.</h2>
-
-      <div class="trust-strip reveal">
-        <div class="trust">
-          <strong>Anforderungsbezogene Beschaffung</strong>
-          <span>Jede Anfrage wird anhand konkreter Anforderungen geprüft.</span>
-        </div>
-        <div class="trust">
-          <strong>Klare Konditionen</strong>
-          <span>Mengen, Preise, Verfügbarkeit und Rahmenbedingungen werden transparent abgestimmt.</span>
-        </div>
-        <div class="trust">
-          <strong>Direkte Kommunikation</strong>
-          <span>Persönlicher Geschäftskontakt ohne unnötige Kommunikationswege.</span>
-        </div>
-        <div class="trust">
-          <strong>Internationaler Blick</strong>
-          <span>Bezugsquellen werden nicht ausschließlich auf einen einzelnen Markt beschränkt betrachtet.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRAND STATEMENT -->
-  <section class="section brand-statement">
-    <div class="container">
-      <div class="brand-stack">
-        <div class="brand-word reveal">Source.</div>
-        <div class="brand-word reveal">Connect.</div>
-        <div class="brand-word reveal">Trade.</div>
-        <div class="brand-mini reveal">Avitpac</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section">
-    <div class="container about-copy">
-      <p class="eyebrow reveal">Über Avitpac</p>
-      <h2 class="reveal">Handel lebt von Initiative.</h2>
-
-      <p class="reveal">
-        Avitpac ist ein B2B-Handelsunternehmen mit dem Anspruch,
-        Geschäftsmöglichkeiten aktiv zu entwickeln.
-      </p>
-
-      <div class="about-list reveal">
-        <span>Wir recherchieren.</span>
-        <span>Wir bauen Kontakte auf.</span>
-        <span>Wir prüfen Möglichkeiten.</span>
-        <span>Wir entwickeln konkrete Angebote.</span>
-      </div>
-
-      <p class="reveal">
-        Wenn Angebot, Nachfrage, Mengen und Konditionen zusammenpassen,
-        bringen wir daraus ein Geschäft auf den Weg. Dabei stehen direkte
-        Kommunikation, Geschwindigkeit und langfristige Geschäftsbeziehungen
-        im Mittelpunkt.
-      </p>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
   <section class="section" id="kontakt">
-    <div class="container contact">
-      <div>
-        <p class="eyebrow reveal">Kontakt</p>
-        <h2 class="reveal">Sprechen wir über Ihre nächste Handelsmöglichkeit.</h2>
-        <p class="reveal">
-          Ob Beschaffungsanfrage, Lieferangebot oder neue Handelspartnerschaft –
-          schreiben Sie uns direkt.
-        </p>
-        <p class="reveal" style="color:#c8c8cd;max-width:560px;">
-          Für eine schnelle Kontaktaufnahme können Sie uns Ihre Anfrage auch direkt
-          per E-Mail oder WhatsApp senden.
-        </p>
-
-        <div class="contact-person reveal">
-          <strong>Direkter Geschäftskontakt</strong>
-          <span>Avitpac</span>
-          <span>B2B Handel &amp; Beschaffung</span>
-          <span style="margin-top:10px;">
-            E-Mail: <strong style="display:inline;color:#ddd;">avitpacam@gmail.com</strong>
-          </span>
-          <span>
-            WhatsApp / Telefon: <strong style="display:inline;color:#ddd;">+49 172 7551381</strong>
-          </span>
-
-          <div class="btn-row" style="margin-top:22px;">
-            <a class="btn primary" href="https://wa.me/491727551381" target="_blank" rel="noopener">WhatsApp schreiben</a>
+    <div class="container">
+      <div class="contact-shell reveal">
+        <div>
+          <p class="eyebrow">Geschäftsanfrage</p>
+          <h2>Lassen Sie uns prüfen, was möglich ist.</h2>
+          <p>Beschaffungsanfrage, Lieferangebot oder Handelspartnerschaft – senden Sie uns die Eckdaten. Wir melden uns persönlich.</p>
+          <div class="contact-meta">
+            <span><strong>E-Mail</strong> · avitpacam@gmail.com</span>
+            <span><strong>WhatsApp / Telefon</strong> · +49 172 7551381</span>
+          </div>
+          <div class="actions" style="margin-top:24px;">
+            <a class="btn secondary" href="https://wa.me/491727551381" target="_blank" rel="noopener">WhatsApp öffnen <span class="arrow">→</span></a>
           </div>
         </div>
+
+        <form class="form" id="contactForm" name="geschaeftsanfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="geschaeftsanfrage" />
+          <p style="display:none" aria-hidden="true"><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
+
+          <input class="field" type="text" name="name" placeholder="Name" required />
+          <input class="field" type="text" name="unternehmen" placeholder="Unternehmen" required />
+          <input class="field full" type="email" name="email" placeholder="Geschäftliche E-Mail" required />
+
+          <select class="field full" name="art-der-anfrage" required>
+            <option value="">Art der Anfrage</option>
+            <option>Beschaffungsanfrage</option>
+            <option>Lieferangebot</option>
+            <option>Handelspartnerschaft</option>
+            <option>Sonstiges</option>
+          </select>
+
+          <textarea class="field full" name="nachricht" placeholder="Worum geht es? Produkt, Menge, Zielpreis, Lieferzeit …" required></textarea>
+          <button class="submit" type="submit">Anfrage senden</button>
+          <p class="form-note" id="formStatus">Ihre Anfrage wird direkt an Avitpac übermittelt.</p>
+        </form>
       </div>
-
-      <form class="form reveal" id="contactForm" name="geschaeftsanfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="geschaeftsanfrage" />
-        <p style="display:none;" aria-hidden="true"><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
-        <input class="field" type="text" id="name" name="name" placeholder="Name" required />
-        <input class="field" type="text" id="company" name="unternehmen" placeholder="Unternehmen" required />
-        <input class="field full" type="email" id="email" name="email" placeholder="Geschäftliche E-Mail" required />
-        <input class="field full" type="tel" id="phone" name="telefon" placeholder="Telefon (optional)" />
-
-        <select class="field full" id="type" name="art-der-anfrage" required>
-          <option value="">Art der Anfrage</option>
-          <option>Beschaffungsanfrage</option>
-          <option>Lieferangebot</option>
-          <option>Handelspartnerschaft</option>
-          <option>Sonstiges</option>
-        </select>
-
-        <textarea class="field full" id="message" name="nachricht" placeholder="Nachricht" required></textarea>
-
-        <button class="submit" type="submit">Anfrage senden</button>
-        <p class="form-note" id="formStatus">Wir melden uns persönlich bei Ihnen.</p>
-      </form>
     </div>
   </section>
-
 </main>
 
 <footer>
-  <div class="container">
-    <div class="footer-main">
-      <div>
-        <div class="footer-brand">AVITPAC</div>
-        <div class="footer-tag">Sourcing · Trading · Partnerships</div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Unternehmen</h4>
-        <a href="#unternehmen">Über Avitpac</a>
-        <a href="#leistungen">Leistungen</a>
-        <a href="#einkaeufer">Für Einkäufer</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Geschäft</h4>
-        <a href="#lieferanten">Für Lieferanten</a>
-        <a href="#kontakt">Geschäftsanfrage</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Rechtliches</h4>
-        <a href="#" id="imprintLink">Impressum</a>
-        <a href="#" id="privacyLink">Datenschutz</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Avitpac. Alle Rechte vorbehalten.</span>
-      <span>SOURCE. CONNECT. TRADE.</span>
+  <div class="container footer">
+    <div>© <span id="year"></span> AVITPAC · SOURCE. CONNECT. TRADE.</div>
+    <div class="footer-links">
+      <a href="#" id="imprintLink">Impressum</a>
+      <a href="#" id="privacyLink">Datenschutz</a>
     </div>
   </div>
 </footer>
 
-<!-- IMPRESSUM: Platzhalter vor Veröffentlichung ersetzen -->
 <dialog id="imprintDialog">
   <div class="dialog-inner">
     <button class="dialog-close" data-close="imprintDialog">Schließen</button>
-    <h2 style="font-size:38px;">Impressum</h2>
-
-    <p><span class="placeholder">VOR LIVEGANG AUSFÜLLEN</span></p>
-
+    <h2>Impressum</h2>
+    <p><span class="placeholder">Rechtliche Angaben vervollständigen</span></p>
     <p>
       Avitpac<br>
       <span class="placeholder">Vollständiger Name / Rechtsform</span><br>
       <span class="placeholder">Straße + Hausnummer</span><br>
       <span class="placeholder">PLZ + Ort</span>
     </p>
-
-    <p>
-      Vertreten durch:<br>
-      <span class="placeholder">Name des Inhabers / Geschäftsführers</span>
-    </p>
-
-    <p>
-      Kontakt:<br>
-      E-Mail: avitpacam@gmail.com<br>
-      Telefon: +49 172 7551381
-    </p>
-
-    <p>
-      Umsatzsteuer-ID / Wirtschafts-ID, falls vorhanden:<br>
-      <span class="placeholder">Nummer eintragen</span>
-    </p>
+    <p>Kontakt:<br>E-Mail: avitpacam@gmail.com<br>Telefon: +49 172 7551381</p>
+    <p>Umsatzsteuer-ID / Wirtschafts-ID, falls vorhanden:<br><span class="placeholder">Nummer eintragen</span></p>
   </div>
 </dialog>
 
-<!-- DATENSCHUTZ: Platzhalter, keine Rechtsberatung -->
 <dialog id="privacyDialog">
   <div class="dialog-inner">
     <button class="dialog-close" data-close="privacyDialog">Schließen</button>
-    <h2 style="font-size:38px;">Datenschutz</h2>
-
-    <p><span class="placeholder">VOR LIVEGANG RECHTLICH PRÜFEN</span></p>
-
-    <p>
-      Diese Vorlage enthält bewusst keine erfundene Datenschutzerklärung.
-      Die endgültige Datenschutzerklärung muss zu deinem tatsächlichen Hosting,
-      Formularversand, Analyse-/Tracking-Einsatz und weiteren eingebundenen
-      Diensten passen.
-    </p>
-
-    <p>
-      Wenn du diese Seite rein statisch ohne Tracking betreibst, bleibt die
-      Erklärung meist deutlich einfacher. Sobald externe Dienste, Analytics,
-      Cookies oder ein externer Formularanbieter genutzt werden, muss dies
-      entsprechend berücksichtigt werden.
-    </p>
+    <h2>Datenschutz</h2>
+    <p><span class="placeholder">Rechtlich prüfen und vervollständigen</span></p>
+    <p>Die endgültige Datenschutzerklärung muss zum tatsächlichen Hosting, Formularversand und zu allen eingebundenen Diensten passen. Das Kontaktformular wird über Netlify Forms übermittelt.</p>
   </div>
 </dialog>
 
 <script>
-  // ====== BASIS ======
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Header Blur
   const header = document.getElementById("header");
-  const setHeader = () => header.classList.toggle("scrolled", window.scrollY > 20);
-  setHeader();
-  window.addEventListener("scroll", setHeader, {passive:true});
+  const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 18);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, {passive:true});
 
-  // Mobile Menu
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  menuBtn.addEventListener("click", () => {
-    const open = mobileMenu.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(open));
-    menuBtn.textContent = open ? "Schließen" : "Menü";
-  });
-
-  mobileMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded","false");
-      menuBtn.textContent = "Menü";
-    });
-  });
-
-  // Reveal on Scroll
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if(entry.isIntersecting){
         entry.target.classList.add("in");
-        revealObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, {threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
-
-  // Statement Lines
-  const statementObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-      }
+  // Tactile card interaction: subtle tilt on pointer devices, press feedback on touch.
+  if(window.matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".tactile").forEach(card => {
+      card.addEventListener("pointermove", e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const rx = ((y / r.height) - .5) * -5;
+        const ry = ((x / r.width) - .5) * 7;
+        card.style.setProperty("--mx", `${x}px`);
+        card.style.setProperty("--my", `${y}px`);
+        card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+      });
+      card.addEventListener("pointerleave", () => card.style.transform = "");
     });
-  }, {threshold:.55});
+  }
 
-  document.querySelectorAll(".statement-line").forEach(el => statementObserver.observe(el));
-
-  // ====== KONTAKTFORMULAR ======
-  // Echte Übermittlung über Netlify Forms – keine Mail-App erforderlich.
+  // Netlify Forms: submit on-page, no mail app opens.
   const contactForm = document.getElementById("contactForm");
   const formStatus = document.getElementById("formStatus");
   const submitButton = contactForm.querySelector(".submit");
 
-  contactForm.addEventListener("submit", async function(e){
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    const originalText = submitButton.textContent;
+    const original = submitButton.textContent;
     submitButton.disabled = true;
     submitButton.textContent = "Wird gesendet …";
-    formStatus.textContent = "Ihre Anfrage wird übermittelt …";
+    formStatus.textContent = "Anfrage wird übermittelt …";
+    formStatus.style.color = "#8c8c92";
 
-    try {
+    try{
       const formData = new FormData(contactForm);
       const body = new URLSearchParams();
-      for (const [key, value] of formData.entries()) body.append(key, value);
+      for(const [key,value] of formData.entries()) body.append(key,value);
 
       const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString()
+        method:"POST",
+        headers:{"Content-Type":"application/x-www-form-urlencoded"},
+        body:body.toString()
       });
-
-      if (!response.ok) throw new Error("Übermittlung fehlgeschlagen");
+      if(!response.ok) throw new Error("Form submission failed");
 
       contactForm.reset();
-      formStatus.textContent = "Vielen Dank. Ihre Geschäftsanfrage wurde erfolgreich übermittelt. Wir melden uns persönlich bei Ihnen.";
-      formStatus.style.color = "#f5f5f7";
       submitButton.textContent = "Anfrage gesendet ✓";
-
+      formStatus.textContent = "Vielen Dank. Ihre Geschäftsanfrage wurde erfolgreich übermittelt.";
+      formStatus.style.color = "#f5f5f7";
       setTimeout(() => {
-        submitButton.textContent = originalText;
         submitButton.disabled = false;
-      }, 3500);
-    } catch (error) {
-      formStatus.textContent = "Die Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns per WhatsApp.";
-      formStatus.style.color = "#f2a6a6";
-      submitButton.textContent = originalText;
+        submitButton.textContent = original;
+      }, 3200);
+    }catch(err){
       submitButton.disabled = false;
+      submitButton.textContent = original;
+      formStatus.textContent = "Das Senden hat gerade nicht funktioniert. Bitte versuchen Sie es erneut oder nutzen Sie WhatsApp.";
+      formStatus.style.color = "#efaaaa";
     }
   });
 
-  // ====== DIALOGE ======
   const imprintDialog = document.getElementById("imprintDialog");
   const privacyDialog = document.getElementById("privacyDialog");
-
-  document.getElementById("imprintLink").addEventListener("click", e => {
-    e.preventDefault();
-    imprintDialog.showModal();
-  });
-
-  document.getElementById("privacyLink").addEventListener("click", e => {
-    e.preventDefault();
-    privacyDialog.showModal();
-  });
-
-  document.querySelectorAll("[data-close]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.getElementById(btn.dataset.close).close();
-    });
-  });
-
-  [imprintDialog, privacyDialog].forEach(dialog => {
-    dialog.addEventListener("click", e => {
-      const rect = dialog.getBoundingClientRect();
-      const outside =
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom;
-
-      if(outside) dialog.close();
-    });
-  });
+  document.getElementById("imprintLink").addEventListener("click", e => {e.preventDefault();imprintDialog.showModal()});
+  document.getElementById("privacyLink").addEventListener("click", e => {e.preventDefault();privacyDialog.showModal()});
+  document.querySelectorAll("[data-close]").forEach(btn => btn.addEventListener("click", () => document.getElementById(btn.dataset.close).close()));
+  [imprintDialog,privacyDialog].forEach(dialog => dialog.addEventListener("click", e => {
+    const r = dialog.getBoundingClientRect();
+    if(e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+  }));
 </script>
-
 </body>
 </html>
