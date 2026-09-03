@@ -11,6 +11,7 @@
 - Normale Änderungswünsche in diesem Repository beziehen sich automatisch auf avitpac.de. Der Nutzer muss weder avitpac.de noch `AGENTS.md`, GitHub, Netlify, den Branch `main`, das Committen oder das Pushen ausdrücklich erwähnen.
 - Bei jedem eindeutigen Änderungswunsch automatisch die passenden Dateien im Repository bearbeiten.
 - Dabei bestehende Funktionen und das bestehende Design möglichst beibehalten.
+- Vor größeren strukturellen Änderungen automatisch vom aktuellen Stand einen Backup-Branch im Format `backup-vor-grossen-aenderungen-YYYY-MM-DD` erstellen und zu GitHub pushen. Existiert der Name bereits, eine fortlaufende Endung wie `-2`, `-3` usw. ergänzen.
 - Nach der Änderung die betroffenen Dateien und den resultierenden Diff prüfen.
 - Anschließend ausschließlich die beabsichtigten Änderungen committen und auf `main` pushen.
 - Nur nachfragen, wenn der Änderungswunsch wirklich unklar ist oder mehrere deutlich unterschiedliche Umsetzungen möglich sind.
