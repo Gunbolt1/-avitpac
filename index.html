@@ -116,8 +116,8 @@
       -webkit-backdrop-filter:blur(22px) saturate(130%);
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:28px}
-    .brand{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:800;letter-spacing:.25em}
-    .brand-mark{width:9px;height:9px;border:1px solid #eef2f5;transform:rotate(45deg);box-shadow:0 0 16px rgba(255,255,255,.16)}
+    .brand{display:inline-flex;align-items:center;flex-shrink:0;min-height:44px;border-radius:4px}
+    .brand-logo{display:block;width:96px;height:auto;aspect-ratio:3/2;object-fit:contain;mix-blend-mode:screen}
     .nav-center{display:flex;align-items:center;gap:32px;color:#9b9fa6;font-size:14px}
     .nav-center a{position:relative;padding:10px 0;transition:color .25s ease}
     .nav-center a::after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:1px;background:#eef2f5;transition:right .35s var(--ease)}
@@ -205,7 +205,10 @@
     .hero .actions{justify-content:center}
 
     /* One deliberate route, kept below the copy rather than behind it. */
-    .trade-route{margin:36px auto 0;max-width:920px;pointer-events:none}
+    .trade-route{position:relative;isolation:isolate;margin:36px auto 0;max-width:920px;pointer-events:none}
+    /* Original artwork, framed above the wordmark: no redrawing or logo motion. */
+    .hero-brand-symbol{position:absolute;z-index:-1;left:50%;bottom:-10px;transform:translateX(-50%);width:min(55%,320px);aspect-ratio:1536/800;overflow:hidden;opacity:.045;mix-blend-mode:screen;mask-image:linear-gradient(#000 88%,transparent);-webkit-mask-image:linear-gradient(#000 88%,transparent)}
+    .hero-brand-symbol img{display:block;width:100%;height:auto;max-width:none}
     .trade-route__art{position:relative;transform:translate3d(var(--route-x,0px),var(--route-y,0px),0);transition:transform 1.6s var(--ease)}
     .trade-route__art::before{content:"";position:absolute;inset:20% 10%;background:radial-gradient(ellipse,rgba(255,255,255,.035),transparent 70%);z-index:-1}
     .trade-route svg{width:100%;height:auto;overflow:visible}
@@ -372,6 +375,9 @@
     /* FOOTER + DIALOG */
     footer{padding:38px 0 34px;border-top:1px solid rgba(255,255,255,.055)}
     .footer{display:flex;justify-content:space-between;align-items:center;gap:28px;color:#6f757d;font-size:13px}
+    .footer-brand{display:flex;align-items:center;gap:24px;min-width:0}
+    .footer-logo{display:block;width:120px;height:auto;aspect-ratio:3/2;object-fit:contain;flex-shrink:0;mix-blend-mode:screen}
+    .footer-company{line-height:1.7}
     .footer-links{display:flex;gap:22px}
     .footer-links a{transition:color .2s ease}
     .footer-links a:hover{color:#fff}
@@ -414,7 +420,7 @@
       .header{height:70px}
       .header.scrolled{height:64px}
       .nav-center{display:none}
-      .brand{font-size:15px}
+      .brand-logo{width:78px}
       .nav-cta{min-height:40px;padding:0 15px}
       .route-line{display:none}
       .ambient-light{display:none}
@@ -427,6 +433,7 @@
       .hero-sub{font-size:18px}
       .actions .btn{width:100%}
       .trade-route{max-width:440px;margin-top:32px}
+      .hero-brand-symbol{width:min(52%,190px);bottom:0;opacity:.035}
       .trade-route__art{transform:none!important}
       .trade-route .route-desktop{display:none}
       .trade-route .route-mobile{display:block}
@@ -451,6 +458,8 @@
       .form{grid-template-columns:1fr;padding:16px}
       .full,.submit,.form-note{grid-column:1}
       .footer{align-items:flex-start;flex-direction:column}
+      .footer-brand{gap:16px;align-items:center}
+      .footer-logo{width:90px}
       .footer-links{flex-wrap:wrap}
     }
 
@@ -488,7 +497,7 @@
 
 <header class="header" id="header">
   <div class="container nav">
-    <a class="brand" href="#top" aria-label="Avitpac Startseite"><span class="brand-mark" aria-hidden="true"></span>AVITPAC</a>
+    <a class="brand" href="#top" aria-label="Avitpac Startseite"><img class="brand-logo" src="assets/avitpac-logo.png" alt="Avitpac" width="1536" height="1024" decoding="async" /></a>
     <nav class="nav-center" aria-label="Hauptnavigation">
       <a href="#leistungen">Leistungen</a>
       <a href="#partner">Partner</a>
@@ -519,6 +528,7 @@
         </div>
       </div>
       <figure class="trade-route" aria-label="Handelsroute: Avitpac führt Quellen über Prüfung und Verbindung zum Handel zwischen Lieferanten und Einkäufern.">
+        <div class="hero-brand-symbol" aria-hidden="true"><img src="assets/avitpac-logo.png" alt="" width="1536" height="1024" decoding="async" /></div>
         <div class="trade-route__art">
           <svg class="route-desktop" viewBox="0 0 920 150" aria-hidden="true">
             <defs><path id="trade-path" d="M60 87 C160 87 192 40 315 40 S494 100 590 100 S772 52 860 52" pathLength="1000"/></defs>
@@ -718,7 +728,10 @@
 
 <footer>
   <div class="container footer">
-    <div>© <span id="year"></span> AVITPAC · SOURCE. CONNECT. TRADE.</div>
+    <div class="footer-brand">
+      <img class="footer-logo" src="assets/avitpac-logo.png" alt="Avitpac" width="1536" height="1024" loading="lazy" decoding="async" />
+      <div class="footer-company">© <span id="year"></span> AVITPAC · SOURCE. CONNECT. TRADE.</div>
+    </div>
     <div class="footer-links">
       <a href="#" id="imprintLink">Impressum</a>
       <a href="#" id="privacyLink">Datenschutz</a>
